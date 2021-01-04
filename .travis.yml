@@ -3,7 +3,7 @@ services:
     - docker
 
 before_install:
-    - docker build -t pakdboth/docker-react -f Dockerfile .
+    - docker build -t pakdboth/docker-react -f Dockerfile.dev .
 
 script:
     - docker run -e CI=true pakdboth/docker-react npm run test -- --coverage
@@ -11,8 +11,8 @@ script:
 deploy:
     provider: elasticbeanstalk
     region: "ap-southeast-1"
-    app: "docker-react"
-    env: "DockerReact-env"
+    app: "docker-react2"
+    env: "DockerReact2-env"
     bucket_name: "elasticbeanstalk-ap-southeast-1-450668009614"
     bucket_path: "docker-react"
     on:
